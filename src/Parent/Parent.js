@@ -66,13 +66,13 @@ export default function Parent() {
       travelCount = 0;
     console.log(expenseData);
     expenseData.forEach((item) => {
-      if (item.category == "Food") {
+      if (item.category === "Food") {
         foodSpends += Number(item.price);
         foodCount++;
-      } else if (item.category == "Entertainment") {
+      } else if (item.category === "Entertainment") {
         entertainmentSpends += Number(item.price);
         entertainmentCount++;
-      } else if (item.category == "Travel") {
+      } else if (item.category === "Travel") {
         travelSpends += Number(item.price);
         travelCount++;
       }
@@ -89,14 +89,14 @@ export default function Parent() {
       travel: travelCount,
       entertainment: entertainmentCount,
     });
-  }, [expenseData]);
+  }, [expenseData, isMounted]);
 
   // saving balance in localStorage
   useEffect(() => {
     if (isMounted) {
       localStorage.setItem("balance", balance);
     }
-  }, [balance]);
+  }, [balance, isMounted]);
 
   return (
     <div className="parent-element">

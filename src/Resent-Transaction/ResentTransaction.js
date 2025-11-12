@@ -143,17 +143,17 @@ export default function ResentTransaction({
 
   //   }
   const categoryIcon = (category) => {
-    if (category == "Food") {
+    if (category === "Food") {
       return (
         <LocalPizzaOutlinedIcon color="action" sx={{ fontSize: "1.5rem" }} />
       );
     }
-    if (category == "Entertainment") {
+    if (category === "Entertainment") {
       return (
         <CardGiftcardOutlinedIcon color="action" sx={{ fontSize: "1.5rem" }} />
       );
     }
-    if (category == "Travel") {
+    if (category === "Travel") {
       return <LuggageOutlinedIcon color="action" sx={{ fontSize: "1.5rem" }} />;
     }
   };
