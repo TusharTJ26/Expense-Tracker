@@ -115,7 +115,7 @@ export default function Parent() {
       </div>
       <div className="tracking-heading">
         <div style={{ width: "55%" }}>
-          <h2>Resent Transaction</h2>
+          <h2>Recent Transaction</h2>
           <ResentTransaction
             data={expenseData}
             setExpenseData={setExpenseData}
