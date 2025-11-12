@@ -1,0 +1,36 @@
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0.5rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: rgba(98, 98, 98, 1);
+  gap: 6rem;
+  justify-content: center;
+  height: 16.8rem;
+  align-items: center;
+  /* width: 91.97rem; */
+}
+
+.cards {
+  width: 47.5rem;
+  /* width: 47.5vw; */
+  display: flex;
+  gap: 3rem;
+  height: fit-content;
+  height: min-content;
+  /* flex-wrap: wrap; */
+}
+
+@media screen and (max-width: 768px) {
+  .cards {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+  }
+  .main-content {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}

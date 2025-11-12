@@ -1,0 +1,79 @@
+.expenseForm {
+  background-color: rgba(239, 239, 239, 0.85);
+  width: 33.625rem;
+  height: 21rem;
+  border-radius: 1rem;
+  padding: 1rem 3rem;
+  text-align: left;
+  border: none;
+  z-index: 1;
+  position: absolute;
+  /* top: 259px; */
+  top: 16.19rem;
+  /* left: 371px; */
+  left: 23.19rem;
+}
+.expenseForm h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  width: 100%;
+}
+.expenseFormInput {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: rgba(239, 239, 239, 0.85);
+  /* padding: 1rem 0.5rem; */
+  gap: 1rem;
+}
+.expenseFormInput input,
+.expenseFormInput select {
+  width: 14rem;
+  height: 3.2rem;
+  border-radius: 1rem;
+  padding: 0 0.4rem;
+  border: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.expenseForm input::placeholder {
+  color: rgba(145, 145, 145, 1);
+  font-weight: 400;
+}
+
+.expenseForm button {
+  height: 3.19rem;
+  padding: 1rem 0.5rem;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.expenseCard {
+  color: white;
+  font-size: 1.875rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(155, 155, 155, 1);
+  padding: 1rem 0.5rem;
+  border: solid black 1px;
+  border-radius: 1rem;
+  height: 11.3125rem;
+  width: 22.25rem;
+  /* width: 22.25vw; */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .expenseCard {
+    width: 100%;
+  }
+  .expenseForm {
+    left: 10%;
+    width: 70vw;
+  }
+}

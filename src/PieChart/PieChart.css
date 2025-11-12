@@ -1,0 +1,17 @@
+.labels {
+  display: flex;
+  flex-direction: row;
+  /* background-color: white; */
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  font-size: 1rem;
+}
+.labels span {
+  width: 1.625rem;
+  height: 1rem;
+}
+.labels p {
+  margin-right: 0.5rem;
+}

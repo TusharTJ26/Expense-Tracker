@@ -1,0 +1,66 @@
+.addBalForm {
+  padding: 1rem 2rem;
+  color: black;
+  border-radius: 1rem;
+  border: none;
+  height: 10.26rem;
+  width: 33.6rem;
+  background-color: rgba(239, 239, 239, 0.85);
+  text-align: left;
+  z-index: 1;
+  position: absolute;
+  /* top: 296px; */
+  top: 18.5rem;
+  /* left: 371px; */
+  left: 23.19rem;
+}
+
+.addBalForm h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  /* margin: 0; */
+  margin-top: 0;
+}
+.form-main {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-main button,
+.form-main input {
+  height: 3.19rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  border: none;
+}
+.form-main input {
+  width: 13.56rem;
+}
+
+.walletBalanceCard {
+  color: white;
+  font-size: 1.875rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(155, 155, 155, 1);
+  padding: 1rem 0.5rem;
+  border: solid black 1px;
+  border-radius: 1rem;
+  height: 11.3125rem;
+  width: 22.25rem;
+  /* width: 22.25vw; */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .walletBalanceCard {
+    width: 100%;
+  }
+  .addBalForm {
+    left: 10%;
+    width: 70vw;
+  }
+}
