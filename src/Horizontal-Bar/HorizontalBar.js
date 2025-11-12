@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import "./Bar.css";
 // import { BarChart } from "@mui/x-charts/BarChart";
 
@@ -59,9 +59,9 @@ import {
   Bar,
   XAxis,
   YAxis,
-  Tooltip,
+  // Tooltip,
   ResponsiveContainer,
-  Cell,
+  // Cell,
 } from "recharts";
 
 const TinyBarChart = ({ expense, data }) => {

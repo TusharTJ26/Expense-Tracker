@@ -1,12 +1,11 @@
-import React, { PureComponent } from "react";
 import "./PieChart.css";
 import {
   PieChart,
   Pie,
-  Sector,
+  // Sector,
   Cell,
   ResponsiveContainer,
-  Legend,
+  // Legend,
 } from "recharts";
 
 const COLORS = ["#A000FF", "#FF9304", "#FDE006"];

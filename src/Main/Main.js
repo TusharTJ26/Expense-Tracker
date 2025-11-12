@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Main.css";
 import WalletBalance from "../Wallet-Balance/WalletBalance";
 import ExpenseCard from "../Expense/Expense";
