@@ -27,11 +27,10 @@ export default function ResentTransaction({
   const [currentItems, setCurrentItems] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [indexOfFirstItem, setIndexOfFirstItem] = useState(0);
-  const [indexOfLastItem, setIndexOfLastItem] = useState(0);
 
   useEffect(() => {
     const indexOfLastItem = currentPage * itemsPerPage;
-    setIndexOfLastItem(indexOfLastItem);
+    // setIndexOfLastItem(indexOfLastItem);
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     setIndexOfFirstItem(indexOfFirstItem);
     const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
