@@ -1,5 +1,5 @@
 import "./ResentTransaction.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useSnackbar } from "notistack";
 import LocalPizzaOutlinedIcon from "@mui/icons-material/LocalPizzaOutlined";
@@ -7,6 +7,8 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import LuggageOutlinedIcon from "@mui/icons-material/LuggageOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function ResentTransaction({
   data,
@@ -19,6 +21,24 @@ export default function ResentTransaction({
   const { enqueueSnackbar } = useSnackbar();
   const [selectedItem, setSelectedItem] = useState(null);
   const [form, setForm] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3; // You can adjust this number
+
+  const [currentItems, setCurrentItems] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [indexOfFirstItem, setIndexOfFirstItem] = useState(0);
+  const [indexOfLastItem, setIndexOfLastItem] = useState(0);
+
+  useEffect(() => {
+    const indexOfLastItem = currentPage * itemsPerPage;
+    setIndexOfLastItem(indexOfLastItem);
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    setIndexOfFirstItem(indexOfFirstItem);
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    setCurrentItems(currentItems);
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+    setTotalPages(totalPages);
+  }, [data, currentPage, itemsPerPage]);
 
   const EditForm = ({ input }) => {
     // console.log(input.price);
@@ -162,8 +182,8 @@ export default function ResentTransaction({
     <div
       style={{ backgroundColor: "white", border: "none", borderRadius: "1rem" }}
     >
-      {data.map((item, index) => (
-        <div key={index} className="card-holder">
+      {currentItems.map((item, index) => (
+        <div key={indexOfFirstItem + index} className="card-holder">
           <div className="nameIcon">
             <div className="icon">
               {categoryIcon(item.category)}
@@ -222,10 +242,38 @@ export default function ResentTransaction({
               </div>
             </div>
           </div>
+
           {form ? <EditForm input={selectedItem} /> : null}
           {/* {form && selectedItem && <EditForm input={selectedItem} />} */}
         </div>
       ))}
+      <div className="pagination-controls">
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          <ArrowBackIcon />
+        </button>
+        <span
+          style={{
+            margin: "0 .2rem",
+            backgroundColor: "rgba(67, 150, 123, 1)",
+            padding: "0 .8rem",
+            border: "none",
+            borderRadius: "5px",
+          }}
+        >
+          {currentPage}
+        </span>
+        <button
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+        >
+          <ArrowForwardIcon />
+        </button>
+      </div>
     </div>
   );
 }

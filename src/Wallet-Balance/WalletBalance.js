@@ -58,7 +58,7 @@ const WalletBalance = ({ balance, setBalance }) => {
   return (
     <div className="walletBalanceCard">
       <div>
-        Wallet Balance:{" "}
+        Wallet Balance:
         <span style={{ color: "rgba(157, 255, 91, 1)", fontWeight: "700" }}>
           {" "}
           ₹{balance}
