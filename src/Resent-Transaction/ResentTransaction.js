@@ -37,6 +37,9 @@ export default function ResentTransaction({
     setCurrentItems(currentItems);
     const totalPages = Math.ceil(data.length / itemsPerPage);
     setTotalPages(totalPages);
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages || 1); // fallback to page 1 if totalPages is 0
+    }
   }, [data, currentPage, itemsPerPage]);
 
   const EditForm = ({ input }) => {
@@ -246,7 +249,7 @@ export default function ResentTransaction({
           {/* {form && selectedItem && <EditForm input={selectedItem} />} */}
         </div>
       ))}
-      {currentItems.length > 1 ? (
+      {currentItems.length > 2 ? (
         <div className="pagination-controls">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
