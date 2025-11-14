@@ -182,11 +182,12 @@ export default function ResentTransaction({
   console.log(data);
   return (
     <div
-      className="transaction"
+      className="Transactions"
+      name="Transactions"
       style={{ backgroundColor: "white", border: "none", borderRadius: "1rem" }}
     >
       {currentItems.map((item, index) => (
-        <div key={indexOfFirstItem + index} className="card-holder transaction">
+        <div key={indexOfFirstItem + index} className="card-holder">
           <div className="nameIcon">
             <div className="icon">
               {categoryIcon(item.category)}
