@@ -32,7 +32,8 @@ export default function Main({
         />
       </div>
       <div
-        style={{ width: 400, height: 250 }}
+        className="chart-container"
+        // style={{ width: 400, height: 250 }}
         // style={{ height: "16.8rem" }}
       >
         {/* <WalletBalance /> */}

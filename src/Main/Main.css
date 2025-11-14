@@ -5,9 +5,10 @@
   border: none;
   border-radius: 1rem;
   background-color: rgba(98, 98, 98, 1);
-  gap: 6rem;
+  gap: 3rem;
   justify-content: center;
-  height: 16.8rem;
+  /* height: 16.8rem; */
+  height: auto;
   align-items: center;
   /* width: 91.97rem; */
 }
@@ -17,9 +18,16 @@
   /* width: 47.5vw; */
   display: flex;
   gap: 3rem;
-  height: fit-content;
+  /* height: fit-content;  */
   height: min-content;
   /* flex-wrap: wrap; */
+}
+
+.chart-container {
+  /* width: 100%; */
+  width: 25rem;
+  max-width: 400px;
+  height: auto;
 }
 
 @media screen and (max-width: 768px) {

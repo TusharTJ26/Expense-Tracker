@@ -249,7 +249,7 @@ export default function ResentTransaction({
           {/* {form && selectedItem && <EditForm input={selectedItem} />} */}
         </div>
       ))}
-      {currentItems.length > 2 ? (
+      {currentItems.length > 2 || currentPage !== 1 ? (
         <div className="pagination-controls">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

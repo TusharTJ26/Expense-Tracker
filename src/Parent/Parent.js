@@ -125,7 +125,7 @@ export default function Parent() {
             setExpense={setExpense}
           />
         </div>
-        <div style={{ width: "37%" }}>
+        <div style={{ width: "40%" }}>
           <h2>Top Expenses</h2>
           <HorizontalBars
             // style={{ width: "45%" }}

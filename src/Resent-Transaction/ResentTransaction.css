@@ -81,7 +81,8 @@
 }
 .pagination-controls button {
   padding: 0.5rem;
-  background-color: white;
+  background-color: rgba(241, 241, 241, 1);
   border-radius: 1rem;
   text-align: center;
+  font-size: 0.5rem;
 }
