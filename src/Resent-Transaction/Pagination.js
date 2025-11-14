@@ -1,6 +1,6 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
+import "./ResentTransaction.css";
 export default function Pagination({
   setCurrentPage,
   currentPage,

@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import { useSnackbar } from "notistack";
 import { useState } from "react";
-
+import "./ResentTransaction.css";
 const EditForm = ({
   balance,
   expense,
@@ -50,7 +50,7 @@ const EditForm = ({
   };
   return (
     <Modal
-      className="expenseForm"
+      className="editForm"
       isOpen={form}
       // onAfterOpen={afterOpenModal}
       onRequestClose={() => {
@@ -62,7 +62,7 @@ const EditForm = ({
     >
       <div>
         <h2>Edit Expense</h2>
-        <form className="expenseFormInput" onSubmit={handleForm}>
+        <form className="editFormInput" onSubmit={handleForm}>
           <input
             required
             name="title"

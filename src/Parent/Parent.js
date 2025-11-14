@@ -117,7 +117,7 @@ export default function Parent() {
       {/* Resent Transaction Part */}
       <div className="tracking-heading">
         <div style={{ width: "55%" }}>
-          <h2>Recent Transaction</h2>
+          <h2>Transactions</h2>
           <ResentTransaction
             data={expenseData}
             setExpenseData={setExpenseData}
