@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Main from "../Main/Main";
 import ResentTransaction from "../Resent-Transaction/ResentTransaction";
 import "./Parent.css";
-// import TinyBarChart from "../Horizontal-Bar/HorizontalBar";
 import HorizontalBars from "../Horizontal-Bar/HorizontalBar";
 
 export default function Parent() {
@@ -64,7 +63,7 @@ export default function Parent() {
     let foodCount = 0,
       entertainmentCount = 0,
       travelCount = 0;
-    console.log(expenseData);
+    // console.log(expenseData);
     expenseData.forEach((item) => {
       if (item.category === "Food") {
         foodSpends += Number(item.price);
@@ -98,9 +97,11 @@ export default function Parent() {
     }
   }, [balance, isMounted]);
 
+  // Rendering
   return (
     <div className="parent-element">
       <h1>Expense Tracker</h1>
+      {/* Cards and pie section */}
       <div className="main-section">
         <Main
           expense={expense}
@@ -113,9 +114,10 @@ export default function Parent() {
           categoryCount={categoryCount}
         />
       </div>
+      {/* Resent Transaction Part */}
       <div className="tracking-heading">
         <div style={{ width: "55%" }}>
-          <div className="recent-heading">Recent Transaction</div>
+          <h2>Recent Transaction</h2>
           <ResentTransaction
             data={expenseData}
             setExpenseData={setExpenseData}
@@ -125,6 +127,7 @@ export default function Parent() {
             setExpense={setExpense}
           />
         </div>
+        {/* Bar-Graph */}
         <div style={{ width: "40%" }}>
           <h2>Top Expenses</h2>
           <HorizontalBars
@@ -138,7 +141,6 @@ export default function Parent() {
           />
         </div>
       </div>
-      {/* <div className="tracking"></div> */}
     </div>
   );
 }

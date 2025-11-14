@@ -1,14 +1,13 @@
 import "./ResentTransaction.css";
 import { useEffect, useState } from "react";
-import Modal from "react-modal";
-import { useSnackbar } from "notistack";
 import LocalPizzaOutlinedIcon from "@mui/icons-material/LocalPizzaOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import LuggageOutlinedIcon from "@mui/icons-material/LuggageOutlined";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
+import EditForm from "./EditForm";
+import Pagination from "./Pagination";
 
 export default function ResentTransaction({
   data,
@@ -18,12 +17,12 @@ export default function ResentTransaction({
   setExpense,
   expense,
 }) {
-  const { enqueueSnackbar } = useSnackbar();
   const [selectedItem, setSelectedItem] = useState(null);
   const [form, setForm] = useState(false);
+
+  // For pagination and loading specific number of items per page
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3; // You can adjust this number
-
   const [currentItems, setCurrentItems] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [indexOfFirstItem, setIndexOfFirstItem] = useState(0);
@@ -42,128 +41,16 @@ export default function ResentTransaction({
     }
   }, [data, currentPage, itemsPerPage]);
 
-  const EditForm = ({ input }) => {
-    // console.log(input.price);
-    const [expenseAmount, setExpenseAmount] = useState(0);
-    const [title, setTitle] = useState("");
-    const [category, setCategory] = useState("");
-    const [date, setDate] = useState("");
-
-    const handleForm = (e) => {
-      e.preventDefault();
-      if (Number(balance) < Number(expenseAmount) - Number(input.price)) {
-        setForm(false);
-        enqueueSnackbar("Price should be less than the wallet balance", {
-          variant: "warning",
-        });
-        return;
-      }
-      handleExpense();
-
-      // setExpenseData((prev) => [
-      //   ...prev,
-      //   {
-      //     title: title,
-      //     price: Number(expenseAmount),
-      //     category: category,
-      //     date: date,
-      //   },
-      // ]);
-    };
-    const handleExpense = () => {
-      setExpense(Number(expense) - Number(input.price) + Number(expenseAmount));
-      setBalance(Number(balance) - Number(expenseAmount) + Number(input.price));
-      setForm(false);
-      input.price = expenseAmount;
-      input.title = title;
-      input.category = category;
-      input.date = date;
-    };
-    return (
-      <Modal
-        className="expenseForm"
-        isOpen={form}
-        // onAfterOpen={afterOpenModal}
-        onRequestClose={() => {
-          setForm(false);
-        }}
-        // style={customStyles}
-        // style={{ background: "opaque" }}
-        contentLabel="Example Modal"
-      >
-        <div>
-          <h2>Edit Expense</h2>
-          <form className="expenseFormInput" onSubmit={handleForm}>
-            <input
-              required
-              name="title"
-              placeholder="Title"
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-              required
-              name="price"
-              placeholder="Price"
-              // value={expenseAmount}
-              onChange={(e) => setExpenseAmount(e.target.value)}
-            />
-            <select
-              required
-              name="category"
-              placeholder="Select Category"
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="">Select Category</option>
-              <option value="Food">Food</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Travel">Travel</option>
-            </select>
-            <input
-              required
-              name="date"
-              type="date"
-              placeholder="dd/mm/yy"
-              onChange={(e) => setDate(e.target.value)}
-            />
-            <button
-              type="submit"
-              style={{
-                backgroundColor: "rgba(244, 187, 74, 1)",
-                width: "14rem",
-                color: "white",
-                fontWeight: "700",
-                // backgroundImage:
-                //   "linear-gradient(to right, rgba(217, 217, 217, 1),rgba(217, 217, 217, 1),rgba(244, 187, 74, 1))",
-              }}
-            >
-              Add Expense
-            </button>
-            <button
-              style={{
-                backgroundColor: "rgba(217, 217, 217, 1)",
-                width: "7rem",
-                fontWeight: "400",
-              }}
-              onClick={() => setForm(false)}
-            >
-              Cancel
-            </button>
-          </form>
-          <br />
-        </div>
-      </Modal>
-    );
-  };
-
+  // TO remove the item from list
   const handleRemove = (index) => {
     const recive = [...data];
     const sp = recive.splice(index, 1);
+    console.log(sp);
     setExpenseData(recive);
-    setBalance(Number(balance) + sp[0].price);
+    setBalance(Number(balance) + Number(sp[0].price));
   };
-  //   const handleEdit = () =>{
 
-  //   }
+  //For item icon
   const categoryIcon = (category) => {
     if (category === "Food") {
       return (
@@ -179,7 +66,14 @@ export default function ResentTransaction({
       return <LuggageOutlinedIcon color="action" sx={{ fontSize: "1.5rem" }} />;
     }
   };
-  console.log(data);
+
+  if (currentItems.length < 1) {
+    return (
+      <div className="emptyTransactionsWrapper">
+        <p>No transactions!</p>
+      </div>
+    );
+  }
   return (
     <div
       className="Transactions"
@@ -251,38 +145,26 @@ export default function ResentTransaction({
             </div>
           </div>
 
-          {form ? <EditForm input={selectedItem} /> : null}
+          {form ? (
+            <EditForm
+              balance={balance}
+              expense={expense}
+              form={form}
+              input={selectedItem}
+              setBalance={setBalance}
+              setForm={setForm}
+              setExpense={setExpense}
+            />
+          ) : null}
           {/* {form && selectedItem && <EditForm input={selectedItem} />} */}
         </div>
       ))}
       {currentItems.length > 2 || currentPage !== 1 ? (
-        <div className="pagination-controls">
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          >
-            <ArrowBackIcon />
-          </button>
-          <span
-            style={{
-              margin: "0 .2rem",
-              backgroundColor: "rgba(67, 150, 123, 1)",
-              padding: "0 .8rem",
-              border: "none",
-              borderRadius: "5px",
-            }}
-          >
-            {currentPage}
-          </span>
-          <button
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-          >
-            <ArrowForwardIcon />
-          </button>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
       ) : (
         ""
       )}

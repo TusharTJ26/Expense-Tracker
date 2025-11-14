@@ -11,8 +11,7 @@ import {
   // Cell,
 } from "recharts";
 
-const TinyBarChart = ({ expense, data }) => {
-  console.log(data);
+const HorizontalBar = ({ expense, data }) => {
   // const [food, setFood] = useState(0);
   // const [entertainment, setEntertainment] = useState(0);
   // const [travel, setTravel] = useState(0);
@@ -68,4 +67,4 @@ const TinyBarChart = ({ expense, data }) => {
   );
 };
 
-export default TinyBarChart;
+export default HorizontalBar;

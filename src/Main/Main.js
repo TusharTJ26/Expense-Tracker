@@ -13,14 +13,11 @@ export default function Main({
   categorySpends,
   categoryCount,
 }) {
-  console.log(expenseData);
-  console.log(categoryCount);
+  // console.log(expenseData);
+  // console.log(categoryCount);
   return (
     <div className="main-content">
-      <div
-        className="cards"
-        // style={{ width: "47.5rem", display: "flex", gap: "3rem" }}
-      >
+      <div className="cards">
         <WalletBalance balance={balance} setBalance={setBalance} />
         <ExpenseCard
           balance={balance}
