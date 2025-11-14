@@ -9,7 +9,11 @@
   font-size: 2rem;
   font-weight: 700;
 }
-
+.recent-heading {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 3rem;
+}
 .tracking-heading {
   display: flex;
   gap: 2.5rem;
