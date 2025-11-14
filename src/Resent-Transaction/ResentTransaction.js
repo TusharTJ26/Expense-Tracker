@@ -182,6 +182,7 @@ export default function ResentTransaction({
   console.log(data);
   return (
     <div
+      className="Transactions"
       style={{ backgroundColor: "white", border: "none", borderRadius: "1rem" }}
     >
       {currentItems.map((item, index) => (
