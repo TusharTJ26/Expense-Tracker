@@ -116,7 +116,7 @@ export default function Parent() {
       </div>
       {/* Resent Transaction Part */}
       <div className="tracking-heading">
-        <div style={{ width: "55%" }}>
+        <div className="parent-transaction">
           <h2>Transactions</h2>
           <ResentTransaction
             data={expenseData}
@@ -128,10 +128,9 @@ export default function Parent() {
           />
         </div>
         {/* Bar-Graph */}
-        <div style={{ width: "40%" }}>
+        <div className="parent-bar">
           <h2>Top Expenses</h2>
           <HorizontalBars
-            // style={{ width: "45%" }}
             expense={expenseData}
             data={[
               { name: "Food", value: categorySpends.food },

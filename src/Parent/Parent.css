@@ -21,4 +21,20 @@
   flex-wrap: wrap;
   /* justify-content: space-between; */
   /* padding-right: 20rem; */
+  width: 100%;
+}
+.parent-transaction {
+  width: 55%;
+}
+.parent-bar {
+  width: 40%;
+}
+
+@media (max-width: 850px) {
+  .parent-transaction {
+    width: 100%;
+  }
+  .parent-bar {
+    width: 100%;
+  }
 }
